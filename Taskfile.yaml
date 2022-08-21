@@ -1,0 +1,38 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  build:
+   desc: 'Build the image'
+   cmds:
+     - task: down
+     - docker-compose build
+  up:
+    desc: "Start the containers"
+    cmds:
+      - docker-compose up -d
+  down:
+    desc: "Stop the containers"
+    cmds:
+      - docker-compose down
+  restart:
+    desc: "Restart the containers"
+    cmds:
+      - task: down
+      - task: up
+  logs:
+    desc: "Show the logs"
+    cmds:
+      - docker-compose logs -f
+  ps:
+    desc: "Show the containers"
+    cmds:
+      - docker-compose ps
+  ubuntu:
+    desc: "Show the ubuntu container"
+    cmds:
+      - docker-compose exec ubuntu /bin/bash

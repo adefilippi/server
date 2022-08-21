@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: ./Docker/Dockerfile
+    ports:
+      # HTTP
+      - target: 80
+        published: 80
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: 443
+        protocol: tcp
+    volumes:
+      - ./www:/var/www/
+      - ./postgres:/tmp/postgres
+      - ./nginx:/tmp/nginx
