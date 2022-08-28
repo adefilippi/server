@@ -3,7 +3,7 @@ services:
   ubuntu:
     build:
       context: .
-      dockerfile: ./Docker/Dockerfile
+      dockerfile: ./docker/Dockerfile
     ports:
       # HTTP
       - target: 80
@@ -17,3 +17,11 @@ services:
       - ./www:/var/www/
       - ./postgres:/tmp/postgres
       - ./nginx:/tmp/nginx
+      - ./install/hitch/hitch.conf:/etc/hitch/hitch.conf
+      - ./install/hitch/ssl:/etc/hitch/
+
+      - ./install/varnish/varnish.service:/lib/systemd/system/varnish.service
+      - ./install/varnish/varnish.conf:/etc/default/varnish
+      - ./install/varnish/default.vcl:/etc/varnish/default.vcl
+
+      - ./install/nginx/sites-available/local.lunamy.com:/etc/nginx/sites-available/local.lunamy.com

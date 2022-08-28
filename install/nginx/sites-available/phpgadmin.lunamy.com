@@ -1,5 +1,6 @@
 server {
-    listen 80;
+    listen 8000;
+    listen [::]:8000 default_server;
     server_name phpgadmin.lunamy.com www.phpgadmin.lunamy.com;
     root /usr/share/phppgadmin;
 

@@ -1,5 +1,6 @@
 server {
-    listen 80;
+    listen 8000;
+    listen [::]:8000 default_server;
     server_name front.lunamy.com www.front.lunamy.com;
     root /var/www/front.lunamy.com;
 
